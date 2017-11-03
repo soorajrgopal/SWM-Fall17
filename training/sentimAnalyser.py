@@ -13,8 +13,7 @@ Class that generate the sentiment of the given sentence.
 Initializing the class will train the classifier with the 
 training data.
 
-Then you can use the method getSEntiments(message) to get the sentiment 
-value.
+Then you can use the method getSEntiments(message) to get the predicted rating.
 
 """
 class SentimentalAnalyzer:
@@ -30,20 +29,18 @@ class SentimentalAnalyzer:
 		self.classifier.train()
 		self.classifier.validateClassifier()
 	
-	# Return 1 if happy 0 if sad
 	def getSentiments(self, message):
 		return self.classifier.classify(message)
 
 obj = SentimentalAnalyzer() 
-messages = ['There was a time in life when I was walking alone a road and found no value in life, but now I feel so much better and happy.',
-'There was a time in life when I was walking alone a road and found no value in life.',
-'I am feeling so relived',
-'I am feeling so awesome', 
-'I am so worried',
-'a hot girl outside',
-'its very hot outside',
-'This movie was actually neither that funny, nor super witty.']
+messages = ['An excellent and riveting story from start to finish.',
+            'Cruiser just can''t act. Story line works, but not with him.',
+            'Based on true events and action packed! Go see it!',
+            'This film could have been better, it had a great story, a good cast, but the telling of the story was done awkwardly, they tried to make a villain a hero, and failed by making him too goofy, and straying from a true story that would have been a great film on its own',
+            'Roller coaster ride. But can Cruise play anyone new?',
+            'predictable crap, just wish he got more of his teeth knocked out']
 
 
 for status in messages:
-	print 'Predicted: ', 'HAPPY'.ljust(10) if obj.getSentiments(status) == '1' else 'SAD'.ljust(10), status.rjust(0)
+    print obj.getSentiments(status)
+
