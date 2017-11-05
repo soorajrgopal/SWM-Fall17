@@ -6,15 +6,13 @@ from bs4 import BeautifulSoup
 import os
 import sys
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
 urllib3.disable_warnings()
 
 storage_path = ''
 file_name = 'movie_list.txt'
 
 #Modify to put limit
-num_movies = int(raw_input("No of movies? (max 100) : "))
+num_movies = int(input("No of movies? (max 100) : "))
 
 rt_url = "https://www.rottentomatoes.com/top/bestofrt/?year=2017"
 http = urllib3.PoolManager()
@@ -32,5 +30,5 @@ if page.status == 200:
         f.write(str(movie['href']).strip())
         f.write('\n')
 
-print 'Done: Got ' + str(num_movies) + ' movies'
+print ('Done: Got ' + str(num_movies) + ' movies')
 f.close

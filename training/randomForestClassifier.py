@@ -29,10 +29,10 @@ class RandomForestClassifer:
 		tokenizedData = extracter.getTokenizedData()
 		trainingData = tokenizedData['train']
 
-		print ''
-		print 'Training Random Forest Classifier'
-		print 'Training data size = ', len(trainingData)
-		print ''
+		print ('')
+		print ('Training Random Forest Classifier')
+		print ('Training data size = ', len(trainingData))
+		print ('')
 
 		train_wordList = []
 		train_labels = []
@@ -65,7 +65,7 @@ class RandomForestClassifer:
 		# Train the classifier
 		self.classifier = RandomForestClassifier(n_estimators = 50) 
 		self.classifier = self.classifier.fit(featuresArray_Valence, train_labels)
-		print 'Training Random Forest Classifier Completed'
+		print ('Training Random Forest Classifier Completed')
 		
 
 	def validateClassifier(self):
@@ -74,10 +74,10 @@ class RandomForestClassifer:
 		tokenizedData = extracter.getTokenizedData()
 		testData = tokenizedData['test']
 
-		print ''
-		print 'Validating Random Forest Classifier'
-		print 'Test data size = ', len(testData)
-		print ''
+		print ('')
+		print ('Validating Random Forest Classifier')
+		print ('Test data size = ', len(testData))
+		print ('')
 
 		test_wordList = []
 		test_labels = []
@@ -101,7 +101,7 @@ class RandomForestClassifer:
 		predictedVal = self.classifier.predict(testF)
 		
 		score = accuracy_score(test_labels,predictedVal)
-		print 'Accuracy: ', score
+		print ('Accuracy: ', score)
 
 	def classify(self, statusMessage):
 
@@ -120,5 +120,8 @@ if __name__ == '__main__':
     trainObj = RandomForestClassifer()
     trainObj.train()
     trainObj.validateClassifier()
-    print trainObj.classify('I didn''t care much for this one. Most of the special effects were good, but "Kong" moved too much like a human rather than a gorilla. The original King Kong was much more believable.')
-    print trainObj.classify('Kong Skull Island: Bursting with special effects and soaring eye candy, one that benfits from Smaul L Jacksons preformance. Even tho it has one to many side characters and inaccurate pacing. But Kong Skulk Island is sure to please.')
+    print (trainObj.classify('I didn''t care much for this one. Most of the special effects were good, but "Kong" moved too much like a human rather than a gorilla. The original King Kong was much more believable.'))
+    print (trainObj.classify('Kong Skull Island: Bursting with special effects and soaring eye candy, one that benfits from Smaul L Jacksons preformance. Even tho it has one to many side characters and inaccurate pacing. But Kong Skulk Island is sure to please.'))
+    print (trainObj.classify('this movie is an utter flop, I have three words to say bad bad bad.'))
+    print (trainObj.classify('this is very good movie.'))
+    print (trainObj.classify('this is an ok movie.'))

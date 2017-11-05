@@ -131,5 +131,5 @@ class ExtractFeatures:
 	The dataset contains words marked in range [-5,5] 
 	'''
 	def getValenceDict(self):
-		valenceDict = dict(map(lambda (k,v): (k,int(v)), [ line.split('\t') for line in open('./data/AFINN/AFINN-111.txt') ]))
+		valenceDict = dict(map(lambda x: (x[0], int(x[1])), [ line.split('\t') for line in open('./data/AFINN/AFINN-111.txt') ]))
 		return valenceDict

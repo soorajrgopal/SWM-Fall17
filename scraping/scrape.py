@@ -3,8 +3,6 @@ from bs4 import BeautifulSoup
 import os
 import sys
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
 urllib3.disable_warnings()
 
 storage_path = '../training/data/'
@@ -17,12 +15,12 @@ try:
         movies = f.readlines()
     movies = [x.strip().replace('\n','') for x in movies]
 except IOError:
-    print '\n' + 'No movie list to iterate. Run get_movies first!' + '\n'
+    print ('\n' + 'No movie list to iterate. Run get_movies first!' + '\n')
     sys.exit(1)
 
 f = open(storage_path+file_name , 'w')
 for movie in movies:
-    print movie
+    print (movie)
     page_no = 1
     base_url = "https://www.rottentomatoes.com/"
     review_url = "/reviews/?type=user&page="
@@ -54,5 +52,5 @@ for movie in movies:
         page_no += 1
         page = http.request('GET',base_url+ movie + review_url +str(page_no));
 
-print 'Done'
+print ('Done')
 f.close
