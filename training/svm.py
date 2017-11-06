@@ -30,10 +30,10 @@ class SVM:
 		tokenizedData = extracter.getTokenizedData()
 		trainingData = tokenizedData['train']
 
-		print ''
-		print 'Training SVM Classifier'
-		print 'Training data size = ', len(trainingData)
-		print ''
+		print ('')
+		print ('Training SVM Classifier')
+		print ('Training data size = ', len(trainingData))
+		print ('')
 
 		train_wordList = []
 		train_labels = []
@@ -68,7 +68,7 @@ class SVM:
 		self.classifier.fit(featuresArray_Valence, train_labels)
 		#self.classifier = RandomForestClassifier(n_estimators = 50) 
 		#self.classifier = self.classifier.fit(featuresArray_Valence, train_labels)
-		print 'Training SVM Classifier Completed'
+		print ('Training SVM Classifier Completed')
 		
 
 	def validateClassifier(self):
@@ -77,10 +77,10 @@ class SVM:
 		tokenizedData = extracter.getTokenizedData()
 		testData = tokenizedData['test']
 
-		print ''
-		print 'Validating SVM Classifier'
-		print 'Test data size = ', len(testData)
-		print ''
+		print ('')
+		print ('Validating SVM Classifier')
+		print ('Test data size = ', len(testData))
+		print ('')
 
 		test_wordList = []
 		test_labels = []
@@ -105,7 +105,7 @@ class SVM:
 		print (testF)		
 
 		score = accuracy_score(test_labels,predictedVal)
-		print 'Accuracy: ', score
+		print ('Accuracy: ', score)
 
 	def classify(self, statusMessage):
 
@@ -124,7 +124,7 @@ if __name__ == '__main__':
     trainObj = SVM()
     trainObj.train()
     trainObj.validateClassifier()
-    print trainObj.classify('What probably is a fine true story is given a Disney/Hallmark style treatment with a dose of US jingoism thrown in for bad measure. No thanks.')
-    print trainObj.classify('It''s just popular because it has a good message. Very cheesy.')
+    print (trainObj.classify('What probably is a fine true story is given a Disney/Hallmark style treatment with a dose of US jingoism thrown in for bad measure. No thanks.'))
+    print (trainObj.classify('It''s just popular because it has a good message. Very cheesy.'))
 
 
