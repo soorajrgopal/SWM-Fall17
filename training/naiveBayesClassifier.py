@@ -3,6 +3,7 @@ from extractFeatures import ExtractFeatures
 import nltk.classify.util
 from nltk.tokenize import word_tokenize
 from nltk.classify import NaiveBayesClassifier
+import pickle
 
 class SentiNaiveBayesClassifier:
 
@@ -56,8 +57,12 @@ if __name__ == '__main__':
     trainObj = SentiNaiveBayesClassifier()
     trainObj.train()
     trainObj.validateClassifier()
-    print (trainObj.classify('What probably is a fine true story is given a Disney/Hallmark style treatment with a dose of US jingoism thrown in for bad measure. No thanks.'))
-    print (trainObj.classify('It''s just popular because it has a good message. Very cheesy.'))
-    print (trainObj.classify('Raw features excellent performances, squirming violence, and plenty of bizarre energy and indie filmmaking to make a strong lasting impression'))
-    print (trainObj.classify('This is a bad movie.'))
-    print (trainObj.classify('This is not a bad movie.'))
+    f = open('./model/naiveBayesClassifierModel.pickle','wb')
+    # Dumps the trained model as a pickle (serializes model object)
+    pickle.dump(trainObj, f)
+    f.close()
+    # print (trainObj.classify('What probably is a fine true story is given a Disney/Hallmark style treatment with a dose of US jingoism thrown in for bad measure. No thanks.'))
+    # print (trainObj.classify('It''s just popular because it has a good message. Very cheesy.'))
+    # print (trainObj.classify('Raw features excellent performances, squirming violence, and plenty of bizarre energy and indie filmmaking to make a strong lasting impression'))
+    # print (trainObj.classify('This is a bad movie.'))
+    # print (trainObj.classify('This is not a bad movie.'))
